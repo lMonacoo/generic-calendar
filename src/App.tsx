@@ -11,7 +11,11 @@ const Container = styled.main`
   margin: 0;
 
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  color: #f1f1f1;
   background-color: #1f1f1f;
 `;
 
@@ -19,7 +23,16 @@ function App() {
   const previousDate = new Date(2022, 3, 15);
   const actualDate = new Date(2022, 3, 30);
 
-  console.log('Date filter calendar', actualDate, previousDate);
+  const formatSelectedDate = (selectedDate: Date): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit'
+    };
+
+    return selectedDate.toLocaleDateString('en-US', options);
+  };
 
   return (
     <Container>
@@ -34,6 +47,9 @@ function App() {
           { label: '1 year', returnInMonths: 12 }
         ]}
       />
+
+      <h1>Calendar Range:</h1>
+      <span>{`${formatSelectedDate(previousDate)} - ${formatSelectedDate(actualDate)}`}</span>
     </Container>
   );
 }
