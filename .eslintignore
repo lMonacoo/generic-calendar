@@ -1,0 +1,15 @@
+*.html
+*.css
+*.svg
+*.d.ts
+node_modules
+dist
+.husky
+.vscode
+
+coverage
+build
+
+craco.config.js
+commitlint.config.js
+vite.config.ts
